@@ -1,0 +1,40 @@
+Dear   Sarathkumar, 
+
+I've got an exciting (and slightly heroic) mission for you in   Machine Test Round.  You’re free to use GitHub Co-Pilot or GPT’s to assist you.
+
+Your task, should you bravely accept it, is to build a "News App" from scratch called ACONEWS! 🎉
+
+But wait! We’re not talking about just any ol' news app – this one’s powered by https://gnews.io/  (free tier only because we're humble). It’s going to be the latest scoop machine, feeding users hot-off-the-press news from all over.
+
+Here’s the game plan: 
+
+Step 1: Get to Know the Source 🕵️‍♂️ 
+Head over to gnews.io ( https://gnews.io/ ) and grab yourself an API key. No key, no news, no glory!
+
+Step 2: Frontend – Make it Shine ✨ 
+Develop a sleek, user-friendly UI where users can read news like they’re sipping hot coffee with a fresh newspaper. The design can be completely up to you , but keep in mind, we’re aiming for something that looks sharp on mobile, tablet, AND desktop. In other words: responsive design is key!
+
+Step 3: Backend – Power it Up 🚀 
+Set up the backend to pull news articles from the gnews.io API and serve them fresh to the frontend. You’ll need to handle pagination, search, and all that nerdy backend magic. 🔮
+
+Step 4: Firebase is Your Home 🏡 
+Host your masterpiece on Firebase Free Tier . (Because what’s more fun than deploying an app and watching it come to life? 🎬)
+
+Step 5: Share the Glory 🌟  
+When you're done making Acowale News the talk of the town, upload your project link and the public Git Repo, to the form link below. And don’t forget to include a brief paragraph about the process you followed – we want to hear your adventure story!
+
+🚀 Submit here: https://zfrmz.in/7Bw9gvGlVQy9uB4BsiIB
+
+Final Checklist :
+✅   API Key from gnews.io
+✅   A frontend that’s slick, responsive, and screams Acowalian
+✅   A backend that powers news into the app like a seasoned journalist 
+✅  Host in  Firebase
+✅   GitHub repo link (so we could eye your code quality ❤️) 
+✅   A summary of your experience, your victories, and that one time you cried when it didn’t compile (we’ve all been there).
+
+
+Happy coding! We’re looking forward to seeing your masterpiece! 🤩 
+If you can dodge errors, you can dodge anything 💪. Still confused? Check out our guide:  https://corporate.acowale.com/23/34/26/07/product-engineering-432-machine-test-guide-23489-143/18/
+
+Stay curious, stay creative! 
