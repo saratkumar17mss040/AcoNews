@@ -50,7 +50,7 @@ Note:
 
 Pagination works only on dev server - json-server. Please check out the gif.
 
-Local demo video link: https://drive.google.com/file/d/1WqUNRTrkZ-VqdxxXzsDbKx6gQwyVqPYf/view?usp=drive_link
+Local demo video link: https://drive.google.com/file/d/1WqUNRTrkZ-VqdxxXzsDbKx6gQwyVqPYf/view?usp=sharing
 
 Project Console: https://console.firebase.google.com/project/aconews-19bf5/overview
 
