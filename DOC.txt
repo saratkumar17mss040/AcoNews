@@ -26,13 +26,12 @@ When you're done making Acowale News the talk of the town, upload your project l
 🚀 Submit here: https://zfrmz.in/7Bw9gvGlVQy9uB4BsiIB
 
 Final Checklist :
-✅   API Key from gnews.io
-✅   A frontend that’s slick, responsive, and screams Acowalian
-✅   A backend that powers news into the app like a seasoned journalist 
-✅  Host in  Firebase
-✅   GitHub repo link (so we could eye your code quality ❤️) 
-✅   A summary of your experience, your victories, and that one time you cried when it didn’t compile (we’ve all been there).
-
+✅   API Key from gnews.io - done
+✅   A frontend that’s slick, responsive, and screams Acowalian - done
+✅   A backend that powers news into the app like a seasoned journalist - done
+✅  Host in  Firebase - done
+✅   GitHub repo link (so we could eye your code quality ❤️) - done
+✅   A summary of your experience, your victories, and that one time you cried when it didn’t compile (we’ve all been there). - done
 
 Happy coding! We’re looking forward to seeing your masterpiece! 🤩 
 If you can dodge errors, you can dodge anything 💪. Still confused? Check out our guide:  https://corporate.acowale.com/23/34/26/07/product-engineering-432-machine-test-guide-23489-143/18/

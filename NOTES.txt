@@ -2,38 +2,58 @@ App Name: Aconews
 
 Backend features:
 
-1. fetch all latest news
-2. fetch news based on search
-3. fetch news based on pagination changes
-4. Add basic validation and error handling
+1. fetch all latest news - done
+2. fetch news based on search - done
+3. fetch news based on pagination changes - done
+4. Add basic validation and error handling - done
 
 Backend endpoints to mock:
 
 First mock using json-server to avoid wasting resources, then move it to gnews api 
 
-Headline endpoint: https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=us&max=10&apikey=a8f44e6e39a5a4dca6d6170f32e99129
-Search endpoint: https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=a8f44e6e39a5a4dca6d6170f32e99129
-Pagination endpoint: http://localhost:4000/news?_page={page}&_limit={limit}
+Headline endpoint: https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=us&max=10&apikey=val
+Search endpoint: https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=val
+Pagination endpoint: http://localhost:4000/news?_page=pageNo
 
 Frontend features:
 
 Build components:
 
-1. SearchBar - debounce input for better performance
-2. NewsList
-3. NewsCard
-4. Pagination
+1. SearchBar - debounce input for better performance - done
+2. NewsList - done - memoized it
+3. NewsCard  - done
+4. Pagination  - done
 
-Build neccessary reusable hooks and uis
-Add error handling and error uis
+Build neccessary reusable hooks and uis - done
+Add error handling and error uis - done
 
 Important notes:
 
 Pagination and full article content is not available in free tier
 Using json-server to simulate api endpoint as to not waste resources while developing
-Since no access to see the endpoint for pagination, will build one 
+Since no access to see the endpoint for pagination, will build one using json-server
 
-No need to process "" empty string value - need to check later for search query
+For frontend steps:
 
-npm run build - by defauly vite will take .env.production
-firebase deploy to deploy frontend
+npm run dev - by default vite will take .env.development
+npm run build - by default vite will take .env.production
+firebase deploy - to deploy frontend to firebase
+
+For backend steps:
+
+npm run dev - for running in dev mode with json-server
+npm run prod - for running in prod mode
+
+Project Console: https://console.firebase.google.com/project/aconews-19bf5/overview
+
+Frontend Firebase Hosting URL: https://aconews-19bf5.web.app
+Backend render aconews service URL: https://aconews-alq9.onrender.com
+
+ A summary of your experience, your victories, and that one time you cried when it didn’t compile (we’ve all been there).
+
+ My experience include working with html, css, js apps building freshworks marketplace apps - jibble, ziwo.
+ I also have exposure over react and building rest-api services.
+ Mentored a lot of experienced and new people helping them to code and debug issues.
+ There was one time when i was trying to fix some jsx syntax, it kept on giving errors. finally, i figured out the issue.
+ Most often, checking the codeflow and debugging will help. Even after that not able to resolve, take a break and comeback. we will
+ be able to resolve it. If not, ask for help from peers. Apply the learning...
