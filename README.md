@@ -12,8 +12,10 @@ Backend endpoints to mock:
 First mock using json-server to avoid wasting resources, then move it to gnews api
 
 Headline endpoint: https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=us&max=10&apikey=val
+
 Search endpoint: https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=val
-Pagination endpoint: http://localhost:4000/news?\_page=pageNo
+
+Pagination endpoint: http://localhost:4000?page=pageNo
 
 Frontend features:
 
@@ -53,6 +55,7 @@ Local demo video link: https://drive.google.com/file/d/1WqUNRTrkZ-VqdxxXzsDbKx6g
 Project Console: https://console.firebase.google.com/project/aconews-19bf5/overview
 
 Frontend Firebase Hosting URL: https://aconews-19bf5.web.app
+
 Backend render aconews service URL: https://aconews-alq9.onrender.com
 
 A summary of your experience, your victories, and that one time you cried when it didn’t compile (we’ve all been there).
