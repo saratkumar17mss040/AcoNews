@@ -2,7 +2,7 @@ import { useEffect, useState, memo } from "react";
 import NewsCard from "./NewsCard";
 import Pagination from "./Pagination";
 import useScrollToTop from "../hooks/useScrollToTop";
-import { delay } from "../utils/formatDate";
+// import { delay } from "../utils/formatDate";
 import { PaginationFallback } from "../utils/errorFallbackUIs";
 
 // this is how vite imports env vars
@@ -13,7 +13,7 @@ function NewsList({ searchQuery }) {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
   const scrollToTop = useScrollToTop();
 
@@ -26,7 +26,7 @@ function NewsList({ searchQuery }) {
         setLoading(true);
         // await delay(1000);
         let url = "";
-        if (currentPage > 1) {
+        if (currentPage > 0 && !searchQuery) {
           url = `${API_BASE_URL}/api/headlines?page=${currentPage}`;
         } else {
           url = searchQuery
@@ -51,7 +51,7 @@ function NewsList({ searchQuery }) {
 
     console.log("fetching news");
     fetchNews();
-  }, [searchQuery, currentPage]);
+  }, [searchQuery, currentPage, scrollToTop]);
 
   if (loading) {
     return (

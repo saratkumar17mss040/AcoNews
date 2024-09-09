@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
-import "dotenv/config";
+import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 import catchAsync from "./utils/catchAsync.js";
 import ApiError from "./utils/apiError.js";
 import errorHandler from "./middlewares/error.js";
@@ -23,9 +25,45 @@ const headlinesValidationRules = [
     .withMessage("Page must be a positive integer"),
 ];
 
-// URL for json-server
-const jsonServerUrl = process.env.JSON_SERVER_URL || "http://localhost:5000";
-const port = process.env.PORT || 4000;
+let serverUrl = "";
+
+let jsonPathURLS = {
+  search: "/search",
+  pagination: "/pagination",
+  headlines: "/headlines",
+};
+
+let gnewsPathURLS = {
+  search: `/search`,
+  pagination: `/top-headlines?category=technology&lang=en&country=in&max=10`,
+};
+
+let finalPathURLS = {};
+console.log(`Running in ${process.env.NODE_ENV} mode`);
+
+// Get the current directory
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Determine which .env file to load based on NODE_ENV
+const envFile =
+  process.env.NODE_ENV === "production"
+    ? ".env.production"
+    : ".env.development";
+
+// Load the specific .env file
+dotenv.config({ path: path.resolve(__dirname, envFile) });
+
+if (process.env.NODE_ENV === "development") {
+  // URL for json-server
+  serverUrl = process.env.JSON_SERVER_URL || "http://localhost:5000";
+  finalPathURLS = jsonPathURLS;
+} else if (process.env.NODE_ENV === "production") {
+  // URL for production
+  serverUrl = process.env.GNEWS_BACKEND_BASE_URL;
+  finalPathURLS = gnewsPathURLS;
+}
+const port = process.env.BACKEND_PORT || 4000;
 
 const app = express();
 
@@ -48,15 +86,41 @@ app.get(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const page = parseInt(req.query.page) || 1; // Default to page 1
+    const page = parseInt(req.query.page);
     const limit = 10; // Fixed limit of 10 items per page
+    let headlineURL = "";
 
-    const response = await fetch(`${jsonServerUrl}/pagination`);
+    if (
+      process.env.NODE_ENV === "production" &&
+      finalPathURLS === gnewsPathURLS &&
+      page
+    ) {
+      console.log("Pagination not supported for this resource");
+      return res.status(httpStatus.NOT_IMPLEMENTED).json({
+        status: httpStatus.NOT_IMPLEMENTED,
+        message: "Pagination not supported for this resource",
+      });
+    } else if (process.env.NODE_ENV === "production") {
+      headlineURL = `${serverUrl}${finalPathURLS.pagination}&apikey=${process.env.GNEWS_API_KEY}`;
+    } else {
+      headlineURL = `${serverUrl}${finalPathURLS.pagination}`;
+    }
+    console.log(`Headline URL: ${headlineURL}`);
+
+    const response = await fetch(headlineURL);
     if (!response.ok) {
       throw new ApiError(response.status, response.statusText);
     }
 
     const allData = await response.json();
+
+    if (!page) {
+      return res.json({
+        totalNews: allData.articles.length,
+        totalPages: Math.ceil(allData.articles.length / limit),
+        data: allData.articles.slice(0, limit),
+      });
+    }
 
     const startIndex = (page - 1) * limit;
 
@@ -82,15 +146,21 @@ app.get(
   searchValidationRules, // Apply the validation rules
   catchAsync(async (req, res) => {
     const errors = validationResult(req);
-    console.log(errors);
+    // console.log(errors);
     if (!errors.isEmpty()) {
       return res.status(403).json({ message: errors.array() });
     }
 
     const query = req.query.q;
     const encodedQuery = encodeURIComponent(query);
-    const searchUrl = `${jsonServerUrl}/search?q=${encodedQuery}`;
-    const response = await fetch(searchUrl);
+    let searchURL = "";
+    if (finalPathURLS === gnewsPathURLS) {
+      searchURL = `${serverUrl}${finalPathURLS.search}?q=${encodedQuery}&lang=en&country=in&max=10&apikey=${process.env.GNEWS_API_KEY}`;
+    } else {
+      searchURL = `${serverUrl}${finalPathURLS.search}?q=${encodedQuery}`;
+    }
+    console.log(`Search URL: ${searchURL}`);
+    const response = await fetch(searchURL);
 
     if (!response.ok) {
       throw new ApiError(response.status, response.statusText);

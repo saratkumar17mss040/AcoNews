@@ -5,12 +5,27 @@ Backend features:
 1. fetch all latest news
 2. fetch news based on search
 3. fetch news based on pagination changes
+4. Add basic validation and error handling
 
 Backend endpoints to mock:
+
+First mock using json-server to avoid wasting resources, then move it to gnews api 
 
 Headline endpoint: https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=us&max=10&apikey=a8f44e6e39a5a4dca6d6170f32e99129
 Search endpoint: https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=a8f44e6e39a5a4dca6d6170f32e99129
 Pagination endpoint: http://localhost:4000/news?_page={page}&_limit={limit}
+
+Frontend features:
+
+Build components:
+
+1. SearchBar - debounce input for better performance
+2. NewsList
+3. NewsCard
+4. Pagination
+
+Build neccessary reusable hooks and uis
+Add error handling and error uis
 
 Important notes:
 
@@ -18,5 +33,8 @@ Pagination and full article content is not available in free tier
 Using json-server to simulate api endpoint as to not waste resources while developing
 Since no access to see the endpoint for pagination, will build one 
 
-No need to process "" empty string value - need to check later for search query 
+No need to process "" empty string value - need to check later for search query
+
+
+
 
