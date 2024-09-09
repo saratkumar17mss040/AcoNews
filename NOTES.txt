@@ -35,6 +35,5 @@ Since no access to see the endpoint for pagination, will build one
 
 No need to process "" empty string value - need to check later for search query
 
-
-
-
+npm run build - by defauly vite will take .env.production
+firebase deploy to deploy frontend
