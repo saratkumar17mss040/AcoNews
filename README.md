@@ -9,11 +9,11 @@ Backend features:
 
 Backend endpoints to mock:
 
-First mock using json-server to avoid wasting resources, then move it to gnews api 
+First mock using json-server to avoid wasting resources, then move it to gnews api
 
 Headline endpoint: https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=us&max=10&apikey=val
 Search endpoint: https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=val
-Pagination endpoint: http://localhost:4000/news?_page=pageNo
+Pagination endpoint: http://localhost:4000/news?\_page=pageNo
 
 Frontend features:
 
@@ -21,8 +21,8 @@ Build components:
 
 1. SearchBar - debounce input for better performance - done
 2. NewsList - done - memoized it
-3. NewsCard  - done
-4. Pagination  - done
+3. NewsCard - done
+4. Pagination - done
 
 Build neccessary reusable hooks and uis - done
 Add error handling and error uis - done
@@ -48,16 +48,18 @@ Note:
 
 Pagination works only on dev server - json-server. Please check out the gif.
 
+Local demo video link: https://drive.google.com/file/d/1WqUNRTrkZ-VqdxxXzsDbKx6gQwyVqPYf/view?usp=drive_link
+
 Project Console: https://console.firebase.google.com/project/aconews-19bf5/overview
 
 Frontend Firebase Hosting URL: https://aconews-19bf5.web.app
 Backend render aconews service URL: https://aconews-alq9.onrender.com
 
- A summary of your experience, your victories, and that one time you cried when it didn’t compile (we’ve all been there).
+A summary of your experience, your victories, and that one time you cried when it didn’t compile (we’ve all been there).
 
- My experience include working with html, css, js apps building freshworks marketplace apps - jibble, ziwo.
- I also have exposure over react and building rest-api services.
- Mentored a lot of experienced and new people helping them to code and debug issues.
- There was one time when i was trying to fix some jsx syntax, it kept on giving errors. finally, i figured out the issue.
- Most often, checking the codeflow and debugging will help. Even after that not able to resolve, take a break and comeback. we will
- be able to resolve it. If not, ask for help from peers. Apply the learning...
+My experience include working with html, css, js apps building freshworks marketplace apps - jibble, ziwo.
+I also have exposure over react and building rest-api services.
+Mentored a lot of experienced and new people helping them to code and debug issues.
+There was one time when i was trying to fix some jsx syntax, it kept on giving errors. finally, i figured out the issue.
+Most often, checking the codeflow and debugging will help. Even after that not able to resolve, take a break and comeback. we will
+be able to resolve it. If not, ask for help from peers. Apply the learning...
