@@ -7,7 +7,7 @@
   "scripts": {
     "json-server": "json-server --watch db.json --port 5000",
     "dev": "concurrently \"cross-env NODE_ENV=development npm run json-server\" \"cross-env NODE_ENV=development nodemon server.js\"",
-    "prod": "NODE_ENV=production node server.js"
+    "prod": "concurrently \"cross-env NODE_ENV=production node server.js\""
   },
   "author": "Sarath",
   "license": "MIT",

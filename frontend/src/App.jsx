@@ -1,23 +1,35 @@
 import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
-import SearchBar from "./components/SearchBar";
 import NewsList from "./components/NewsList";
-import { useDebounce } from "./hooks/useDebounce";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { SearchFallback, NewsListFallback } from "./utils/errorFallbackUIs";
+import NewsForm from "./components/NewsForm";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
-  const debouncedSearchQuery = useDebounce(searchQuery, 1500);
+  const handleQueryChange = (queryObj) => {
+    let searchParams = new URLSearchParams();
+
+    if (queryObj.searchTerm) searchParams.append("q", queryObj.searchTerm);
+    if (queryObj.language) searchParams.append("lang", queryObj.language);
+    if (queryObj.country) searchParams.append("country", queryObj.country);
+
+    let fullQueryURL = searchParams.toString()
+      ? `?${searchParams.toString()}`
+      : "";
+    //`${API_BASE_URL}/api/search?q=${searchQuery}`
+    setSearchQuery(fullQueryURL);
+  };
+
   return (
     <>
       <Header />
       <ErrorBoundary fallbackUI={<SearchFallback />}>
-        <SearchBar onSearch={setSearchQuery} />
+        <NewsForm handleQueryChange={handleQueryChange} />
       </ErrorBoundary>
       <ErrorBoundary fallbackUI={<NewsListFallback />}>
-        <NewsList searchQuery={debouncedSearchQuery} />
+        <NewsList searchQuery={searchQuery} />
       </ErrorBoundary>
     </>
   );

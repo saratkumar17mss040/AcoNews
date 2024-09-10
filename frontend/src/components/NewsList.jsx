@@ -30,7 +30,7 @@ function NewsList({ searchQuery }) {
           url = `${API_BASE_URL}/api/headlines?page=${currentPage}`;
         } else {
           url = searchQuery
-            ? `${API_BASE_URL}/api/search?q=${searchQuery}`
+            ? `${API_BASE_URL}/api/search${searchQuery}`
             : `${API_BASE_URL}/api/headlines`;
         }
         const response = await fetch(url);

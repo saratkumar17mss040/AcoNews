@@ -1,6 +1,9 @@
 export default function errorHandler(err, req, res, next) {
   let { statusCode, message } = err;
 
+  statusCode = statusCode || 500;
+  message = message || "Internal Server Error";
+
   res.locals.errorMessage = err.message;
 
   const response = {
@@ -13,5 +16,5 @@ export default function errorHandler(err, req, res, next) {
     console.error(err);
   }
 
-  res.status(statusCode).send(response);
+  res.status(statusCode).json(response);
 }
