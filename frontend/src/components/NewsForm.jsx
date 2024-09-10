@@ -5,12 +5,16 @@ const languageOptions = [
   { value: "", label: "Select Language" },
   { value: "en", label: "English" },
   { value: "es", label: "Spanish" },
+  { value: "fr", label: "French" },
+  { value: "ta", label: "Tamil" },
 ];
 
 const countryOptions = [
   { value: "", label: "Select Country" },
   { value: "us", label: "United States" },
   { value: "in", label: "India" },
+  { value: "au", label: "Australia" },
+  { value: "gb", label: "United Kingdom" },
 ];
 
 function NewsForm({ handleQueryChange }) {

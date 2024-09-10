@@ -99,16 +99,20 @@ router.get(
     const query = req.query.q;
     const lang = req.query.lang;
     const country = req.query.country;
-    const encodedQuery = encodeURIComponent(query);
+  
+    let searchURL = `${serverUrl}${finalPathURLS.search}`;
 
-    let searchURL = `${serverUrl}${finalPathURLS.search}?q=${encodedQuery}`;
-
-    if (lang) {
-      searchURL += `&lang=${encodeURIComponent(lang)}`;
+    if (query) {
+      const encodedQuery = encodeURIComponent(query);
+      searchURL += `?q=${encodedQuery}`;
     }
-
+    
+    if (lang) {
+      searchURL += `${searchURL.includes('?') ? '&' : '?'}lang=${encodeURIComponent(lang)}`;
+    }
+    
     if (country) {
-      searchURL += `&country=${encodeURIComponent(country)}`;
+      searchURL += `${searchURL.includes('?') ? '&' : '?'}country=${encodeURIComponent(country)}`;
     }
 
     if (process.env.NODE_ENV === "production") {
