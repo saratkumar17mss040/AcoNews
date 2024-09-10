@@ -5,3 +5,5 @@ dist
 backend/node_modules
 NOTES.txt
 frontend/.firebase/hosting.ZGlzdA.cache
+backend/.env.*
+frontend/.env.*
