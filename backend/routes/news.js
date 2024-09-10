@@ -99,30 +99,39 @@ router.get(
     const query = req.query.q;
     const lang = req.query.lang;
     const country = req.query.country;
-  
+
     let searchURL = `${serverUrl}${finalPathURLS.search}`;
 
     if (query) {
       const encodedQuery = encodeURIComponent(query);
       searchURL += `?q=${encodedQuery}`;
     }
-    
+
     if (lang) {
-      searchURL += `${searchURL.includes('?') ? '&' : '?'}lang=${encodeURIComponent(lang)}`;
+      searchURL += `${
+        searchURL.includes("?") ? "&" : "?"
+      }lang=${encodeURIComponent(lang)}`;
     }
-    
+
     if (country) {
-      searchURL += `${searchURL.includes('?') ? '&' : '?'}country=${encodeURIComponent(country)}`;
+      searchURL += `${
+        searchURL.includes("?") ? "&" : "?"
+      }country=${encodeURIComponent(country)}`;
     }
 
     if (process.env.NODE_ENV === "production") {
       searchURL += `&apikey=${process.env.GNEWS_API_KEY}`;
     }
 
-    console.log(searchURL);
-    
-
     const response = await fetch(searchURL);
+
+    console.log(searchURL);
+    console.log("Response: ");
+    console.log(response);
+
+    console.log("Articles");
+    console.log(response?.articles);
+
     if (!response.ok) {
       // 500 Internal Server Error
       throw new ApiError(
@@ -130,9 +139,6 @@ router.get(
         `Failed to search news: ${response.statusText}`
       );
     }
-
-    console.log(response);
-    
 
     const { articles } = await response.json();
     // 200 OK
