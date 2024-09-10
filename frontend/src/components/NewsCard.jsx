@@ -1,12 +1,26 @@
 import { formatDate } from "../utils/formatDate";
+import { useState } from "react";
+
+const ImageWithFallback = ({ src, fallbackSrc, alt, className }) => {
+  const [imageSrc, setImageSrc] = useState(src);
+
+  const handleError = () => {
+    setImageSrc(fallbackSrc);
+  };
+
+  return (
+    <img src={imageSrc} alt={alt} onError={handleError} className={className} />
+  );
+};
 
 export default function NewsCard({ article }) {
   return (
     <div className="bg-white shadow-md rounded-lg flex flex-col">
-      <img
-        className="w-full h-48 object-cover"
-        src={article.image || "https://via.placeholder.com/150"}
+      <ImageWithFallback
+        src={article.image}
+        fallbackSrc="https://picsum.photos/300"
         alt={article.title}
+        className="w-full h-48 object-cover"
       />
       <div className="p-4 flex flex-col flex-grow">
         <h2 className="text-lg font-semibold mb-2">{article.title}</h2>

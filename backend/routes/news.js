@@ -51,6 +51,8 @@ router.get(
       headlineURL += `&apikey=${process.env.GNEWS_API_KEY}`;
     }
 
+    console.log("Headline URL: ", headlineURL);
+
     const response = await fetch(headlineURL);
     if (!response.ok) {
       // 500 Internal Server Error
