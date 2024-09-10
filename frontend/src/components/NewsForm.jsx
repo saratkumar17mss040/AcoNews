@@ -27,6 +27,10 @@ function NewsForm({ handleQueryChange }) {
   };
 
   const handleSearchClick = () => {
+    if (!searchTerm) {
+      alert("Please enter a search term");
+      return;
+    }
     handleQueryChange({ searchTerm, language, country });
   };
 

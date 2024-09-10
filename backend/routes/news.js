@@ -119,6 +119,9 @@ router.get(
       searchURL += `&apikey=${process.env.GNEWS_API_KEY}`;
     }
 
+    console.log(searchURL);
+    
+
     const response = await fetch(searchURL);
     if (!response.ok) {
       // 500 Internal Server Error

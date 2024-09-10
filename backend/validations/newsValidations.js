@@ -2,7 +2,8 @@ import { query } from "express-validator";
 
 export const searchValidationRules = [
   query("q")
-    .optional()
+    .isRequired()
+    .withMessage("Query parameter is required")
     .trim()
     .isString()
     .withMessage("Query parameter must be a string")
